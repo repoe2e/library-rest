@@ -1,10 +1,15 @@
 pipeline {
-    agent any 
+    agent any
+    tools {
+        maven 'MAVEN'
+        jdk 'JDK17'
+    }
+
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/repoe2e/library-rest.git'
+               checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/repoe2e/library-rest.git']]])
             }
         }
         stage('Build') {
