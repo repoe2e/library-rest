@@ -16,15 +16,15 @@ pipeline {
             steps {
                 script {
                     // Executa o comando Maven para construir o projeto
-                    sh 'mvn clean package'
-                }
+                    bat 'mvn clean install'
             }
+                }
         }
         stage('API TEST') {
             steps {
                 script {
                     // Executa os testes de API usando Maven
-                    sh 'mvn test'
+                    bat 'mvn test'
                 }
             }
         }
